@@ -13,8 +13,9 @@ A weekly meal planner. Data in client-side state.
 - Meals reference recipes by `recipeId` — all meals come from the recipe catalog
 
 ## Pages
-- / — week view: 7-day grid showing meals (resolved from recipe catalog), links to Recipes and Add New
+- / — week view: 7-day grid showing meals (resolved from recipe catalog), links to Groceries, Recipes, and Add New
 - /day/[date] — day detail: recipe cards (click through to recipe detail), schedule, notes, prev/next nav, leftover marking
 - /new — tabbed form (Note / Time Block) with date picker. Meals are added from the recipe bank instead.
 - /recipes — recipe catalog grid (15 recipes), sorted favorites-first then alphabetical, heart toggle, "Add to plan" picker on each card
 - /recipes/[id] — full recipe detail: ingredients, instructions, favorite toggle, "Add to Meal Plan" button. Back button is context-aware (returns to day view or recipe list)
+- /groceries — side-by-side layout: editable weekly meal plan (left) and aggregated grocery checklist (right). Ingredients are deduplicated with quantity summing and per-recipe breakdowns

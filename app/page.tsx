@@ -34,6 +34,12 @@ export default function Home() {
           </div>
           <div className="flex gap-3">
             <Link
+              href="/groceries"
+              className="border border-zinc-300 text-zinc-700 text-sm font-medium px-4 py-2 rounded-lg hover:bg-zinc-50 transition-colors"
+            >
+              Groceries
+            </Link>
+            <Link
               href="/recipes"
               className="border border-zinc-300 text-zinc-700 text-sm font-medium px-4 py-2 rounded-lg hover:bg-zinc-50 transition-colors"
             >

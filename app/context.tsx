@@ -3,6 +3,11 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import { weekData as initialData, DayPlan, Meal, TimeBlock } from "./data";
 
+const MEAL_ORDER: Record<Meal["type"], number> = { breakfast: 0, lunch: 1, dinner: 2 };
+function sortMeals(meals: Meal[]): Meal[] {
+  return [...meals].sort((a, b) => MEAL_ORDER[a.type] - MEAL_ORDER[b.type]);
+}
+
 interface MealPlannerContextType {
   days: DayPlan[];
   favorites: Set<string>;
@@ -35,7 +40,7 @@ export function MealPlannerProvider({ children }: { children: ReactNode }) {
         if (d.date !== date) return d;
         // Replace existing meal of same type, or add
         const meals = d.meals.filter((m) => m.type !== mealType);
-        return { ...d, meals: [...meals, { type: mealType, recipeId }] };
+        return { ...d, meals: sortMeals([...meals, { type: mealType, recipeId }]) };
       });
     });
   }
@@ -83,7 +88,7 @@ export function MealPlannerProvider({ children }: { children: ReactNode }) {
       return updated.map((d) => {
         if (d.date !== toDate) return d;
         const meals = d.meals.filter((m) => m.type !== toMealType);
-        return { ...d, meals: [...meals, leftoverMeal] };
+        return { ...d, meals: sortMeals([...meals, leftoverMeal]) };
       });
     });
   }
