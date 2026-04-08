@@ -25,38 +25,42 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-50">
-      <header className="bg-white border-b border-zinc-200 px-6 py-5">
-        <div className="flex items-center justify-between max-w-4xl mx-auto">
+    <div className="min-h-screen bg-background">
+      <header className="bg-card border-b border-border px-6 py-8">
+        <div className="flex items-end justify-between max-w-4xl mx-auto">
           <div>
-            <h1 className="text-2xl font-bold text-zinc-900">Meal Planner</h1>
-            <p className="text-sm text-zinc-500 mt-1">Week of April 6 – 12, 2026</p>
+            <h1 className="font-serif text-3xl font-semibold text-foreground tracking-tight">
+              Meal Planner
+            </h1>
+            <p className="text-sm text-muted mt-1 tracking-wide">
+              Week of April 6 – 12, 2026
+            </p>
           </div>
-          <div className="flex gap-3">
+          <nav className="flex gap-3">
             <Link
               href="/groceries"
-              className="border border-zinc-300 text-zinc-700 text-sm font-medium px-4 py-2 rounded-lg hover:bg-zinc-50 transition-colors"
+              className="border border-border text-muted text-sm px-4 py-2 rounded-lg hover:border-accent hover:text-accent transition-colors"
             >
               Groceries
             </Link>
             <Link
               href="/recipes"
-              className="border border-zinc-300 text-zinc-700 text-sm font-medium px-4 py-2 rounded-lg hover:bg-zinc-50 transition-colors"
+              className="border border-border text-muted text-sm px-4 py-2 rounded-lg hover:border-accent hover:text-accent transition-colors"
             >
               Recipes
             </Link>
             <Link
               href="/new"
-              className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              className="bg-accent text-white text-sm px-4 py-2 rounded-lg hover:bg-accent/90 transition-colors"
             >
               + Add New
             </Link>
-          </div>
+          </nav>
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-4 py-6">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <main className="max-w-4xl mx-auto px-4 py-8">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {weekDates.map((date) => {
             const day = days.find((d) => d.date === date);
             const { dayName, monthDay } = formatDate(date);
@@ -67,19 +71,19 @@ export default function Home() {
               <Link
                 key={date}
                 href={`/day/${date}`}
-                className={`block rounded-xl border bg-white p-4 transition-shadow hover:shadow-md ${
+                className={`group block rounded-2xl border bg-card p-5 transition-all hover:shadow-lg hover:-translate-y-0.5 ${
                   isToday
-                    ? "border-blue-400 ring-2 ring-blue-100"
-                    : "border-zinc-200"
+                    ? "border-accent/40 ring-2 ring-accent-light"
+                    : "border-border hover:border-accent/30"
                 }`}
               >
-                <div className="flex items-baseline justify-between mb-3">
-                  <h2 className="font-semibold text-zinc-900">{dayName}</h2>
+                <div className="flex items-baseline justify-between mb-4">
+                  <h2 className="font-serif text-lg text-foreground">{dayName}</h2>
                   <span
-                    className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                    className={`text-xs font-medium px-2.5 py-0.5 rounded-full ${
                       isToday
-                        ? "bg-blue-100 text-blue-700"
-                        : "text-zinc-400"
+                        ? "bg-accent-light text-accent"
+                        : "text-muted"
                     }`}
                   >
                     {isToday ? "Today" : monthDay}
@@ -87,35 +91,37 @@ export default function Home() {
                 </div>
 
                 {meals.length > 0 ? (
-                  <ul className="space-y-2">
+                  <ul className="space-y-2.5">
                     {meals.slice(0, 3).map((meal, i) => {
                       const recipe = getRecipe(meal.recipeId);
                       if (!recipe) return null;
                       return (
-                        <li key={i} className="flex items-center gap-2 text-sm">
+                        <li key={i} className="flex items-center gap-2.5 text-sm">
                           <span className="text-base">{recipe.emoji}</span>
-                          <span className="text-zinc-500 w-16 shrink-0 capitalize">
+                          <span className="text-muted w-16 shrink-0 capitalize text-xs tracking-wide">
                             {meal.type}
                           </span>
-                          <span className="text-zinc-800 truncate">
+                          <span className="text-foreground truncate">
                             {recipe.name}
-                            {meal.isLeftover && " (leftover)"}
+                            {meal.isLeftover && (
+                              <span className="text-accent/60 text-xs ml-1">(leftover)</span>
+                            )}
                           </span>
                         </li>
                       );
                     })}
                     {meals.length > 3 && (
-                      <li className="text-xs text-zinc-400">
+                      <li className="text-xs text-muted">
                         +{meals.length - 3} more
                       </li>
                     )}
                   </ul>
                 ) : (
-                  <p className="text-sm text-zinc-400 italic">No meals planned</p>
+                  <p className="text-sm text-muted/60 italic">No meals planned</p>
                 )}
 
                 {day?.note && (
-                  <p className="mt-3 text-xs text-zinc-400 italic border-t border-zinc-100 pt-2">
+                  <p className="mt-4 text-xs text-muted italic border-t border-border pt-3">
                     {day.note}
                   </p>
                 )}

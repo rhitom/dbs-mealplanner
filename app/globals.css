@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
+html {
+  color-scheme: light;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAF7F2;
+  --foreground: #3D3529;
+  --card: #FFFDF9;
+  --border: #E8E0D4;
+  --muted: #8C8276;
+  --accent: #C2734C;
+  --accent-light: #F0DDD2;
+  --sage: #7C8B6E;
+  --sage-light: #E8EDE4;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-sage: var(--sage);
+  --color-sage-light: var(--sage-light);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-playfair);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* Smooth transitions */
+a, button {
+  transition: all 0.2s ease;
+}
+
+/* Refined checkbox styling */
+input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+/* Warm selection */
+::selection {
+  background: var(--accent-light);
+  color: var(--foreground);
 }

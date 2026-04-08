@@ -22,12 +22,12 @@ export default function RecipeDetailPage() {
 
   if (!recipe) {
     return (
-      <div className="min-h-screen bg-zinc-50 flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-xl font-semibold text-zinc-900 mb-2">
+          <h1 className="font-serif text-xl text-foreground mb-2">
             Recipe not found
           </h1>
-          <Link href="/recipes" className="text-blue-600 hover:underline text-sm">
+          <Link href="/recipes" className="text-accent hover:text-accent/80 text-sm">
             Back to recipes
           </Link>
         </div>
@@ -48,58 +48,60 @@ export default function RecipeDetailPage() {
   }
 
   const inputClass =
-    "rounded-md border border-zinc-300 px-2 py-1.5 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
+    "rounded-lg border border-border px-3 py-2 text-sm text-foreground bg-card focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-transparent";
 
   return (
-    <div className="min-h-screen bg-zinc-50">
-      <header className="bg-white border-b border-zinc-200 px-6 py-5">
-        <Link href={backHref} className="text-sm text-blue-600 hover:underline">
-          {backLabel}
-        </Link>
-        <div className="flex items-center gap-3 mt-2">
-          <span className="text-3xl">{recipe.emoji}</span>
-          <div>
-            <h1 className="text-2xl font-bold text-zinc-900">{recipe.name}</h1>
-            <p className="text-sm text-zinc-500 capitalize">
-              {recipe.type} · ⏱ {recipe.prepTime}
-            </p>
+    <div className="min-h-screen bg-background">
+      <header className="bg-card border-b border-border px-6 py-8">
+        <div className="max-w-2xl mx-auto">
+          <Link href={backHref} className="text-sm text-accent hover:text-accent/80">
+            {backLabel}
+          </Link>
+          <div className="flex items-center gap-4 mt-3">
+            <span className="text-4xl">{recipe.emoji}</span>
+            <div>
+              <h1 className="font-serif text-3xl text-foreground">{recipe.name}</h1>
+              <p className="text-sm text-muted capitalize mt-0.5">
+                {recipe.type} · ⏱ {recipe.prepTime}
+              </p>
+            </div>
+            <button
+              onClick={() => toggleFavorite(recipe.id)}
+              className="ml-auto text-2xl transition-transform hover:scale-110"
+              aria-label={fav ? "Remove from favorites" : "Add to favorites"}
+            >
+              {fav ? "❤️" : "🤍"}
+            </button>
           </div>
-          <button
-            onClick={() => toggleFavorite(recipe.id)}
-            className="ml-auto text-2xl transition-transform hover:scale-110"
-            aria-label={fav ? "Remove from favorites" : "Add to favorites"}
-          >
-            {fav ? "❤️" : "🤍"}
-          </button>
         </div>
       </header>
 
-      <main className="max-w-2xl mx-auto px-4 py-6 space-y-8">
+      <main className="max-w-2xl mx-auto px-4 py-8 space-y-10">
         {/* Add to plan */}
         <section>
           {!showPicker && !submitted && (
             <button
               onClick={() => setShowPicker(true)}
-              className="w-full bg-blue-600 text-white text-sm font-medium py-2.5 rounded-lg hover:bg-blue-700 transition-colors"
+              className="w-full bg-accent text-white text-sm font-medium py-3 rounded-xl hover:bg-accent/90 transition-colors"
             >
               + Add to Meal Plan
             </button>
           )}
           {submitted && (
-            <div className="bg-green-50 border border-green-200 text-green-800 text-sm rounded-lg px-4 py-3">
+            <div className="bg-sage-light border border-sage/20 text-sage text-sm rounded-xl px-4 py-3">
               Added to plan!
             </div>
           )}
           {showPicker && !submitted && (
-            <form onSubmit={handleAdd} className="bg-white border border-zinc-200 rounded-xl p-4 space-y-3">
-              <p className="text-sm font-medium text-zinc-900">Add to meal plan</p>
-              <div className="flex gap-3">
+            <form onSubmit={handleAdd} className="bg-card border border-border rounded-2xl p-5 space-y-4">
+              <p className="font-serif text-base text-foreground">Add to meal plan</p>
+              <div className="flex gap-4">
                 <div className="flex-1">
-                  <label className="block text-xs text-zinc-500 mb-1">Date</label>
+                  <label className="block text-xs text-muted uppercase tracking-widest mb-1.5">Date</label>
                   <input type="date" value={pickerDate} onChange={(e) => setPickerDate(e.target.value)} className={inputClass + " w-full"} required />
                 </div>
                 <div className="flex-1">
-                  <label className="block text-xs text-zinc-500 mb-1">Meal</label>
+                  <label className="block text-xs text-muted uppercase tracking-widest mb-1.5">Meal</label>
                   <select value={pickerType} onChange={(e) => setPickerType(e.target.value as Meal["type"])} className={inputClass + " w-full"}>
                     <option value="breakfast">Breakfast</option>
                     <option value="lunch">Lunch</option>
@@ -107,11 +109,11 @@ export default function RecipeDetailPage() {
                   </select>
                 </div>
               </div>
-              <div className="flex gap-2">
-                <button type="submit" className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+              <div className="flex gap-3">
+                <button type="submit" className="bg-accent text-white text-sm font-medium px-5 py-2 rounded-xl hover:bg-accent/90">
                   Add
                 </button>
-                <button type="button" onClick={() => setShowPicker(false)} className="text-sm text-zinc-500 hover:text-zinc-700">
+                <button type="button" onClick={() => setShowPicker(false)} className="text-sm text-muted hover:text-foreground">
                   Cancel
                 </button>
               </div>
@@ -120,12 +122,12 @@ export default function RecipeDetailPage() {
         </section>
 
         <section>
-          <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wide mb-4">
+          <h2 className="text-xs font-medium text-muted uppercase tracking-widest mb-5">
             Ingredients
           </h2>
-          <div className="bg-white rounded-xl border border-zinc-200 divide-y divide-zinc-100">
+          <div className="bg-card rounded-2xl border border-border divide-y divide-border">
             {recipe.ingredients.map((item, i) => (
-              <div key={i} className="px-5 py-3 text-sm text-zinc-800">
+              <div key={i} className="px-6 py-3.5 text-sm text-foreground">
                 {item}
               </div>
             ))}
@@ -133,16 +135,16 @@ export default function RecipeDetailPage() {
         </section>
 
         <section>
-          <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wide mb-4">
+          <h2 className="text-xs font-medium text-muted uppercase tracking-widest mb-5">
             Instructions
           </h2>
-          <div className="bg-white rounded-xl border border-zinc-200 divide-y divide-zinc-100">
+          <div className="bg-card rounded-2xl border border-border divide-y divide-border">
             {recipe.instructions.map((step, i) => (
-              <div key={i} className="px-5 py-3 flex gap-3">
-                <span className="text-sm font-semibold text-blue-600 shrink-0">
+              <div key={i} className="px-6 py-4 flex gap-4">
+                <span className="text-sm font-serif text-accent shrink-0">
                   {i + 1}.
                 </span>
-                <p className="text-sm text-zinc-800">{step}</p>
+                <p className="text-sm text-foreground leading-relaxed">{step}</p>
               </div>
             ))}
           </div>

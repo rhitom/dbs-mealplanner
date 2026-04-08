@@ -50,18 +50,18 @@ function LeftoverPicker({
 
   if (submitted) {
     return (
-      <div className="mt-3 bg-green-50 border border-green-200 rounded-lg px-3 py-2 text-xs text-green-800">
-        Leftover added to {formatShort(toDate)}!
+      <div className="mt-3 bg-sage-light border border-sage/20 rounded-lg px-3 py-2 text-xs text-sage">
+        Leftover added to {formatShort(toDate)}
       </div>
     );
   }
 
   const inputClass =
-    "rounded-md border border-zinc-300 px-2 py-1 text-xs text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
+    "rounded-lg border border-border px-2 py-1 text-xs text-foreground bg-card focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-transparent";
 
   return (
-    <form onSubmit={handleSubmit} className="mt-3 bg-zinc-50 border border-zinc-200 rounded-lg p-3 space-y-2">
-      <p className="text-xs font-medium text-zinc-700">Save leftover to:</p>
+    <form onSubmit={handleSubmit} className="mt-3 bg-background border border-border rounded-xl p-3 space-y-2">
+      <p className="text-xs font-medium text-foreground">Save leftover to:</p>
       <div className="flex gap-2">
         <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} className={inputClass} required />
         <select value={toType} onChange={(e) => setToType(e.target.value as Meal["type"])} className={inputClass}>
@@ -71,10 +71,10 @@ function LeftoverPicker({
         </select>
       </div>
       <div className="flex gap-2">
-        <button type="submit" className="bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-md hover:bg-blue-700 transition-colors">
+        <button type="submit" className="bg-accent text-white text-xs font-medium px-3 py-1.5 rounded-lg hover:bg-accent/90">
           Add Leftover
         </button>
-        <button type="button" onClick={onClose} className="text-xs text-zinc-500 hover:text-zinc-700">
+        <button type="button" onClick={onClose} className="text-xs text-muted hover:text-foreground">
           Cancel
         </button>
       </div>
@@ -91,20 +91,20 @@ export default function DayPage() {
 
   if (!day) {
     return (
-      <div className="min-h-screen bg-zinc-50 flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-xl font-semibold text-zinc-900 mb-2">
+          <h1 className="font-serif text-xl text-foreground mb-2">
             No meals planned for this day
           </h1>
-          <p className="text-sm text-zinc-500 mb-4">{formatShort(date)}</p>
-          <div className="flex gap-4 justify-center">
-            <Link href={`/day/${prev}`} className="text-blue-600 hover:underline text-sm">
+          <p className="text-sm text-muted mb-6">{formatShort(date)}</p>
+          <div className="flex gap-6 justify-center">
+            <Link href={`/day/${prev}`} className="text-accent hover:text-accent/80 text-sm">
               ← Previous day
             </Link>
-            <Link href="/" className="text-blue-600 hover:underline text-sm">
+            <Link href="/" className="text-accent hover:text-accent/80 text-sm">
               Back to week
             </Link>
-            <Link href={`/day/${next}`} className="text-blue-600 hover:underline text-sm">
+            <Link href={`/day/${next}`} className="text-accent hover:text-accent/80 text-sm">
               Next day →
             </Link>
           </div>
@@ -123,46 +123,48 @@ export default function DayPage() {
   const isToday = date === TODAY;
 
   return (
-    <div className="min-h-screen bg-zinc-50">
-      <header className="bg-white border-b border-zinc-200 px-6 py-5">
-        <Link href="/" className="text-sm text-blue-600 hover:underline">
-          ← Back to week
-        </Link>
-        <div className="flex items-center gap-3 mt-2">
-          <h1 className="text-2xl font-bold text-zinc-900">{dayName}</h1>
-          {isToday && (
-            <span className="text-xs font-medium bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">
-              Today
-            </span>
-          )}
+    <div className="min-h-screen bg-background">
+      <header className="bg-card border-b border-border px-6 py-8">
+        <div className="max-w-2xl mx-auto">
+          <Link href="/" className="text-sm text-accent hover:text-accent/80">
+            ← Back to week
+          </Link>
+          <div className="flex items-center gap-3 mt-3">
+            <h1 className="font-serif text-3xl text-foreground">{dayName}</h1>
+            {isToday && (
+              <span className="text-xs font-medium bg-accent-light text-accent px-2.5 py-0.5 rounded-full">
+                Today
+              </span>
+            )}
+          </div>
+          <p className="text-sm text-muted mt-1">{fullDate}</p>
         </div>
-        <p className="text-sm text-zinc-500">{fullDate}</p>
       </header>
 
-      <nav className="max-w-2xl mx-auto px-4 pt-4 flex justify-between items-center">
+      <nav className="max-w-2xl mx-auto px-4 pt-6 flex justify-between items-center">
         <Link
           href={`/day/${prev}`}
-          className="flex items-center gap-1 text-sm text-zinc-600 hover:text-blue-600 transition-colors"
+          className="flex items-center gap-1.5 text-sm text-muted hover:text-accent transition-colors"
         >
-          <span className="text-lg">←</span>
+          <span>←</span>
           <span>{formatShort(prev)}</span>
         </Link>
         <Link
           href={`/day/${next}`}
-          className="flex items-center gap-1 text-sm text-zinc-600 hover:text-blue-600 transition-colors"
+          className="flex items-center gap-1.5 text-sm text-muted hover:text-accent transition-colors"
         >
           <span>{formatShort(next)}</span>
-          <span className="text-lg">→</span>
+          <span>→</span>
         </Link>
       </nav>
 
-      <main className="max-w-2xl mx-auto px-4 py-6 space-y-8">
+      <main className="max-w-2xl mx-auto px-4 py-8 space-y-10">
         <section>
-          <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wide mb-4">
+          <h2 className="text-xs font-medium text-muted uppercase tracking-widest mb-5">
             Meals
           </h2>
           {day.meals.length > 0 ? (
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-5 sm:grid-cols-3">
               {day.meals.map((meal, i) => {
                 const recipe = getRecipe(meal.recipeId);
                 if (!recipe) return null;
@@ -170,24 +172,26 @@ export default function DayPage() {
                 return (
                   <div
                     key={i}
-                    className="bg-white rounded-xl border border-zinc-200 p-5 flex flex-col items-center text-center hover:shadow-md transition-shadow relative"
+                    className="bg-card rounded-2xl border border-border p-6 flex flex-col items-center text-center hover:shadow-lg hover:-translate-y-0.5 transition-all relative"
                   >
                     {meal.isLeftover && (
-                      <span className="absolute top-2 right-2 text-[10px] font-semibold bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full uppercase tracking-wide">
+                      <span className="absolute top-3 right-3 text-[10px] font-medium bg-accent-light text-accent px-2 py-0.5 rounded-full tracking-wide">
                         Leftover
                       </span>
                     )}
                     <Link href={`/recipes/${recipe.id}?from=/day/${date}`} className="flex flex-col items-center">
-                      <span className="text-4xl mb-3">{recipe.emoji}</span>
-                      <p className="text-xs font-medium text-zinc-400 uppercase tracking-wide">
+                      <span className="text-4xl mb-4">{recipe.emoji}</span>
+                      <p className="text-xs text-muted uppercase tracking-widest">
                         {meal.type}
                       </p>
-                      <p className="text-base font-semibold text-zinc-900 mt-1">
+                      <p className="font-serif text-base text-foreground mt-1.5">
                         {recipe.name}
-                        {meal.isLeftover && " (leftover)"}
+                        {meal.isLeftover && (
+                          <span className="text-accent/60 text-xs ml-1 font-sans">(leftover)</span>
+                        )}
                       </p>
-                      <p className="mt-2 text-xs text-zinc-500">⏱ {meal.isLeftover ? "5 min" : recipe.prepTime}</p>
-                      <p className="mt-1 text-xs text-blue-500">View recipe →</p>
+                      <p className="mt-2.5 text-xs text-muted">⏱ {meal.isLeftover ? "5 min" : recipe.prepTime}</p>
+                      <p className="mt-1.5 text-xs text-accent">View recipe →</p>
                     </Link>
                     {!meal.isLeftover && (
                       <>
@@ -195,7 +199,7 @@ export default function DayPage() {
                           onClick={() =>
                             setLeftoverPickerIndex(leftoverPickerIndex === i ? null : i)
                           }
-                          className="mt-3 text-xs text-zinc-400 hover:text-orange-600 transition-colors"
+                          className="mt-4 text-xs text-muted hover:text-accent transition-colors"
                         >
                           🥡 Mark as leftover
                         </button>
@@ -213,22 +217,22 @@ export default function DayPage() {
               })}
             </div>
           ) : (
-            <p className="text-sm text-zinc-400 italic">No meals planned.</p>
+            <p className="text-sm text-muted italic">No meals planned.</p>
           )}
         </section>
 
         {day.schedule && day.schedule.length > 0 && (
           <section>
-            <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wide mb-4">
+            <h2 className="text-xs font-medium text-muted uppercase tracking-widest mb-5">
               Schedule
             </h2>
-            <div className="bg-white rounded-xl border border-zinc-200 divide-y divide-zinc-100">
+            <div className="bg-card rounded-2xl border border-border divide-y divide-border">
               {day.schedule.map((block, i) => (
-                <div key={i} className="flex items-center gap-4 px-5 py-3">
-                  <span className="text-sm font-mono text-zinc-400 w-20 shrink-0">
+                <div key={i} className="flex items-center gap-4 px-6 py-3.5">
+                  <span className="text-sm font-mono text-muted w-20 shrink-0">
                     {block.time}
                   </span>
-                  <span className="text-sm text-zinc-800">{block.label}</span>
+                  <span className="text-sm text-foreground">{block.label}</span>
                 </div>
               ))}
             </div>
@@ -236,18 +240,18 @@ export default function DayPage() {
         )}
 
         <section>
-          <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wide mb-4">
+          <h2 className="text-xs font-medium text-muted uppercase tracking-widest mb-5">
             Notes
           </h2>
           {day.note ? (
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-5">
-              <p className="text-sm text-amber-900 leading-relaxed whitespace-pre-line">
+            <div className="bg-accent-light/50 border border-accent/15 rounded-2xl p-6">
+              <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">
                 {day.note}
               </p>
             </div>
           ) : (
-            <div className="bg-white border border-dashed border-zinc-300 rounded-xl p-5 text-center">
-              <p className="text-sm text-zinc-400 italic">
+            <div className="bg-card border border-dashed border-border rounded-2xl p-6 text-center">
+              <p className="text-sm text-muted italic">
                 No notes for this day.
               </p>
             </div>

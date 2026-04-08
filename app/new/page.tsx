@@ -12,11 +12,9 @@ export default function NewPage() {
   const [activeTab, setActiveTab] = useState<Tab>("Note");
   const [success, setSuccess] = useState<string | null>(null);
 
-  // Note form state
   const [noteDate, setNoteDate] = useState("2026-04-08");
   const [noteText, setNoteText] = useState("");
 
-  // Time block form state
   const [blockDate, setBlockDate] = useState("2026-04-08");
   const [blockTime, setBlockTime] = useState("");
   const [blockLabel, setBlockLabel] = useState("");
@@ -46,39 +44,41 @@ export default function NewPage() {
   }
 
   const inputClass =
-    "w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
+    "w-full rounded-xl border border-border px-4 py-2.5 text-sm text-foreground bg-card focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-transparent";
 
   return (
-    <div className="min-h-screen bg-zinc-50">
-      <header className="bg-white border-b border-zinc-200 px-6 py-5">
-        <Link href="/" className="text-sm text-blue-600 hover:underline">
-          ← Back to week
-        </Link>
-        <h1 className="text-2xl font-bold text-zinc-900 mt-2">Add New</h1>
-        <p className="text-sm text-zinc-500 mt-1">
-          To add meals, use the{" "}
-          <Link href="/recipes" className="text-blue-600 hover:underline">
-            recipe bank
+    <div className="min-h-screen bg-background">
+      <header className="bg-card border-b border-border px-6 py-8">
+        <div className="max-w-lg mx-auto">
+          <Link href="/" className="text-sm text-accent hover:text-accent/80">
+            ← Back to week
           </Link>
-        </p>
+          <h1 className="font-serif text-3xl text-foreground mt-3">Add New</h1>
+          <p className="text-sm text-muted mt-1">
+            To add meals, use the{" "}
+            <Link href="/recipes" className="text-accent hover:text-accent/80">
+              recipe bank
+            </Link>
+          </p>
+        </div>
       </header>
 
-      <main className="max-w-lg mx-auto px-4 py-6">
+      <main className="max-w-lg mx-auto px-4 py-8">
         {success && (
-          <div className="mb-4 bg-green-50 border border-green-200 text-green-800 text-sm rounded-lg px-4 py-3">
+          <div className="mb-6 bg-sage-light border border-sage/20 text-sage text-sm rounded-xl px-4 py-3">
             {success}
           </div>
         )}
 
-        <div className="flex border-b border-zinc-200 mb-6">
+        <div className="flex gap-1 border-b border-border mb-8">
           {TABS.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2.5 text-sm font-medium border-b-2 transition-colors ${
+              className={`px-5 py-3 text-sm border-b-2 transition-colors ${
                 activeTab === tab
-                  ? "border-blue-600 text-blue-600"
-                  : "border-transparent text-zinc-500 hover:text-zinc-700"
+                  ? "border-accent text-accent"
+                  : "border-transparent text-muted hover:text-foreground"
               }`}
             >
               {tab}
@@ -87,13 +87,13 @@ export default function NewPage() {
         </div>
 
         {activeTab === "Note" && (
-          <form onSubmit={handleNoteSubmit} className="space-y-4">
+          <form onSubmit={handleNoteSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-zinc-900 mb-1">Date</label>
+              <label className="block text-xs text-muted uppercase tracking-widest mb-2">Date</label>
               <input type="date" value={noteDate} onChange={(e) => setNoteDate(e.target.value)} className={inputClass} required />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-900 mb-1">Note</label>
+              <label className="block text-xs text-muted uppercase tracking-widest mb-2">Note</label>
               <textarea
                 value={noteText}
                 onChange={(e) => setNoteText(e.target.value)}
@@ -103,27 +103,27 @@ export default function NewPage() {
                 required
               />
             </div>
-            <button type="submit" className="w-full bg-blue-600 text-white text-sm font-medium py-2.5 rounded-lg hover:bg-blue-700 transition-colors">
+            <button type="submit" className="w-full bg-accent text-white text-sm font-medium py-3 rounded-xl hover:bg-accent/90 transition-colors">
               Add Note
             </button>
           </form>
         )}
 
         {activeTab === "Time Block" && (
-          <form onSubmit={handleBlockSubmit} className="space-y-4">
+          <form onSubmit={handleBlockSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-zinc-900 mb-1">Date</label>
+              <label className="block text-xs text-muted uppercase tracking-widest mb-2">Date</label>
               <input type="date" value={blockDate} onChange={(e) => setBlockDate(e.target.value)} className={inputClass} required />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-900 mb-1">Time</label>
+              <label className="block text-xs text-muted uppercase tracking-widest mb-2">Time</label>
               <input type="time" value={blockTime} onChange={(e) => setBlockTime(e.target.value)} className={inputClass} required />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-900 mb-1">Label</label>
+              <label className="block text-xs text-muted uppercase tracking-widest mb-2">Label</label>
               <input type="text" value={blockLabel} onChange={(e) => setBlockLabel(e.target.value)} placeholder="e.g. Start marinating" className={inputClass} required />
             </div>
-            <button type="submit" className="w-full bg-blue-600 text-white text-sm font-medium py-2.5 rounded-lg hover:bg-blue-700 transition-colors">
+            <button type="submit" className="w-full bg-accent text-white text-sm font-medium py-3 rounded-xl hover:bg-accent/90 transition-colors">
               Add Time Block
             </button>
           </form>
