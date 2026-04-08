@@ -5,14 +5,15 @@ A weekly meal planner. Data in client-side state.
 ## Stack
 - Next.js (App router)
 - Tailwind CSS
-- React state for data (no database yet)
+- React context for state (no database yet, resets on refresh)
+
+## Architecture
+- `app/context.tsx` — MealPlannerProvider wraps the app in layout.tsx; provides `days`, `favorites`, `addMeal`, `addNote`, `addTimeBlock`, `toggleFavorite`, `isFavorite`
+- `app/data.ts` — types (`Meal`, `Recipe`, `DayPlan`, `TimeBlock`) and hardcoded sample data (week + recipe catalog)
 
 ## Pages
-- / - week view: 7-day grid with 3 meals per day, click any day to navigate
-- /day/[date] - single day detail view with full meal cards and notes
-- /new - add a meal or a note
-- /recipes - list of recipe cards
-
-## Data
-- Sample data lives in `app/data.ts` (hardcoded for now)
-- Types: `Meal`, `DayPlan`
+- / — week view: 7-day grid with 3 meals per day, links to Recipes and Add New
+- /day/[date] — day detail: recipe cards (prep time), schedule time blocks, notes, prev/next nav
+- /new — tabbed form (Recipe / Note / Time Block) with date picker, adds to app state
+- /recipes — recipe catalog grid, sorted favorites-first then alphabetical, heart toggle on cards
+- /recipes/[id] — full recipe detail: ingredients, instructions, favorite toggle
