@@ -19,16 +19,6 @@ A weekly meal planner. Data in client-side state.
 - Meals reference recipes by `recipeId` — all meals come from the recipe catalog
 
 ## Pages
-- / — week view: 7-day grid showing meals (resolved from recipe catalog), links to Groceries, Recipes, and Add New
-- /day/[date] — day detail: recipe cards (click through to recipe detail), schedule, notes, prev/next nav, leftover marking
-- /new — tabbed form (Note / Time Block) with date picker. Meals are added from the recipe bank instead.
-- /recipes — recipe catalog grid (15 recipes), sorted favorites-first then alphabetical, heart toggle, "Add to plan" picker on each card
-- /recipes/[id] — full recipe detail: ingredients, instructions, favorite toggle, "Add to Meal Plan" button. Back button is context-aware (returns to day view or recipe list)
-- /groceries — side-by-side layout: editable weekly meal plan (left) and aggregated grocery checklist (right). Ingredients are deduplicated with quantity summing and per-recipe breakdowns
-
-## Session Summary
-
-### Pages built
 - **/** — Weekly homepage with 7-day grid, today highlight, meal previews from recipe catalog
 - **/day/[date]** — Day detail with meal cards, schedule time blocks, notes, prev/next navigation
 - **/new** — Tabbed form for adding notes and time blocks (meals added via recipe bank)
@@ -36,7 +26,7 @@ A weekly meal planner. Data in client-side state.
 - **/recipes/[id]** — Full recipe detail with ingredients, instructions, favorite toggle, context-aware back button
 - **/groceries** — Side-by-side weekly planner + grocery checklist with ingredient deduplication
 
-### Features implemented
+## Features
 - **Recipe-based meal planning** — all meals reference recipes by ID from a 15-recipe catalog
 - **Favorites** — toggle hearts on recipe cards and detail pages, favorites sort to top
 - **Leftovers** — mark meals as leftover, choose target day/slot, replaces existing meal, maintains breakfast/lunch/dinner order
@@ -45,20 +35,16 @@ A weekly meal planner. Data in client-side state.
 - **Editable weekly plan on /groceries** — click any meal slot to swap recipes via dropdown
 - **Context-aware navigation** — recipe detail back button returns to day view or recipe list depending on origin
 
-### Key decisions
+## Key decisions
 - React context for state (no database, resets on refresh)
 - Meals reference `recipeId` instead of storing name/emoji directly — all meal data resolved from catalog
 - Removed calories field per user request
 - Removed Recipe tab from /new — meals only come from the recipe bank
 - Leftovers replace existing meals in the target slot (not stack)
 
-### Design
-- Playfair Display serif headings, Geist Sans body text
-- Warm earth-tone palette: terracotta accent, sage green, cream background, ivory cards
-- Forced light mode to prevent dark mode inversion
-- Minimalist zen styling with hover lift effects and generous spacing
-
-### Remaining tasks
-- Configure Playwright MCP (command ran with error — needs re-run with correct syntax)
-- Verify at least one interaction using Playwright MCP
-- Deploy to Vercel via GitHub
+## MCP Tests
+- Navigated to localhost:3000 and verified the homepage loads with the weekly meal grid
+- Navigated to /new, filled in a note ("make risotto next week.") for April 10, and submitted the form
+- Navigated back to homepage to verify the note persisted in state
+- Navigated to /groceries and swapped 7 meal slots to create a rotation of 2 breakfasts (Avocado Toast, Greek Yogurt Bowl), 3 lunches (Caesar Salad, Tomato Soup, Grain Bowl), and 3 dinners (Grilled Salmon, Chicken Stir-Fry, Pasta Primavera)
+- Verified the grocery list updated correctly, dropping from 79 to 42 items with proper quantity aggregation

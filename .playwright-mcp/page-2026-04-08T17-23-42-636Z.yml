@@ -1,0 +1,148 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - heading "Meal Planner" [level=1] [ref=e6]
+          - paragraph [ref=e7]: Week of April 6 – 12, 2026
+        - navigation [ref=e8]:
+          - link "Groceries" [ref=e9] [cursor=pointer]:
+            - /url: /groceries
+          - link "Recipes" [ref=e10] [cursor=pointer]:
+            - /url: /recipes
+          - link "+ Add New" [ref=e11] [cursor=pointer]:
+            - /url: /new
+    - main [ref=e12]:
+      - generic [ref=e13]:
+        - link "Monday Apr 6 🥑 breakfast Avocado Toast 🥗 lunch Caesar Salad 🐟 dinner Grilled Salmon Meal prep day — chop veggies and marinate salmon ahead of time." [ref=e14] [cursor=pointer]:
+          - /url: /day/2026-04-06
+          - generic [ref=e15]:
+            - heading "Monday" [level=2] [ref=e16]
+            - generic [ref=e17]: Apr 6
+          - list [ref=e18]:
+            - listitem [ref=e19]:
+              - generic [ref=e20]: 🥑
+              - generic [ref=e21]: breakfast
+              - generic [ref=e22]: Avocado Toast
+            - listitem [ref=e23]:
+              - generic [ref=e24]: 🥗
+              - generic [ref=e25]: lunch
+              - generic [ref=e26]: Caesar Salad
+            - listitem [ref=e27]:
+              - generic [ref=e28]: 🐟
+              - generic [ref=e29]: dinner
+              - generic [ref=e30]: Grilled Salmon
+          - paragraph [ref=e31]: Meal prep day — chop veggies and marinate salmon ahead of time.
+        - link "Tuesday Apr 7 🥣 breakfast Greek Yogurt Bowl 🌯 lunch Turkey Wrap 🍳 dinner Chicken Stir-Fry" [ref=e32] [cursor=pointer]:
+          - /url: /day/2026-04-07
+          - generic [ref=e33]:
+            - heading "Tuesday" [level=2] [ref=e34]
+            - generic [ref=e35]: Apr 7
+          - list [ref=e36]:
+            - listitem [ref=e37]:
+              - generic [ref=e38]: 🥣
+              - generic [ref=e39]: breakfast
+              - generic [ref=e40]: Greek Yogurt Bowl
+            - listitem [ref=e41]:
+              - generic [ref=e42]: 🌯
+              - generic [ref=e43]: lunch
+              - generic [ref=e44]: Turkey Wrap
+            - listitem [ref=e45]:
+              - generic [ref=e46]: 🍳
+              - generic [ref=e47]: dinner
+              - generic [ref=e48]: Chicken Stir-Fry
+        - link "Wednesday Today 🥤 breakfast Berry Smoothie 🍅 lunch Tomato Soup 🍝 dinner Pasta Primavera Use up veggies before they go bad." [ref=e49] [cursor=pointer]:
+          - /url: /day/2026-04-08
+          - generic [ref=e50]:
+            - heading "Wednesday" [level=2] [ref=e51]
+            - generic [ref=e52]: Today
+          - list [ref=e53]:
+            - listitem [ref=e54]:
+              - generic [ref=e55]: 🥤
+              - generic [ref=e56]: breakfast
+              - generic [ref=e57]: Berry Smoothie
+            - listitem [ref=e58]:
+              - generic [ref=e59]: 🍅
+              - generic [ref=e60]: lunch
+              - generic [ref=e61]: Tomato Soup
+            - listitem [ref=e62]:
+              - generic [ref=e63]: 🍝
+              - generic [ref=e64]: dinner
+              - generic [ref=e65]: Pasta Primavera
+          - paragraph [ref=e66]: Use up veggies before they go bad.
+        - link "Thursday Apr 9 🥞 breakfast Pancakes 🍚 lunch Grain Bowl 🌮 dinner Tacos" [ref=e67] [cursor=pointer]:
+          - /url: /day/2026-04-09
+          - generic [ref=e68]:
+            - heading "Thursday" [level=2] [ref=e69]
+            - generic [ref=e70]: Apr 9
+          - list [ref=e71]:
+            - listitem [ref=e72]:
+              - generic [ref=e73]: 🥞
+              - generic [ref=e74]: breakfast
+              - generic [ref=e75]: Pancakes
+            - listitem [ref=e76]:
+              - generic [ref=e77]: 🍚
+              - generic [ref=e78]: lunch
+              - generic [ref=e79]: Grain Bowl
+            - listitem [ref=e80]:
+              - generic [ref=e81]: 🌮
+              - generic [ref=e82]: dinner
+              - generic [ref=e83]: Tacos
+        - link "Friday Apr 10 🍳 breakfast Eggs Benedict 🍜 lunch Pho 🍳 dinner Chicken Stir-Fry Date night — make it fancy." [ref=e84] [cursor=pointer]:
+          - /url: /day/2026-04-10
+          - generic [ref=e85]:
+            - heading "Friday" [level=2] [ref=e86]
+            - generic [ref=e87]: Apr 10
+          - list [ref=e88]:
+            - listitem [ref=e89]:
+              - generic [ref=e90]: 🍳
+              - generic [ref=e91]: breakfast
+              - generic [ref=e92]: Eggs Benedict
+            - listitem [ref=e93]:
+              - generic [ref=e94]: 🍜
+              - generic [ref=e95]: lunch
+              - generic [ref=e96]: Pho
+            - listitem [ref=e97]:
+              - generic [ref=e98]: 🍳
+              - generic [ref=e99]: dinner
+              - generic [ref=e100]: Chicken Stir-Fry
+          - paragraph [ref=e101]: Date night — make it fancy.
+        - link "Saturday Apr 11 🥑 breakfast Avocado Toast 🥗 lunch Caesar Salad 🥘 dinner Beef Stew" [ref=e102] [cursor=pointer]:
+          - /url: /day/2026-04-11
+          - generic [ref=e103]:
+            - heading "Saturday" [level=2] [ref=e104]
+            - generic [ref=e105]: Apr 11
+          - list [ref=e106]:
+            - listitem [ref=e107]:
+              - generic [ref=e108]: 🥑
+              - generic [ref=e109]: breakfast
+              - generic [ref=e110]: Avocado Toast
+            - listitem [ref=e111]:
+              - generic [ref=e112]: 🥗
+              - generic [ref=e113]: lunch
+              - generic [ref=e114]: Caesar Salad
+            - listitem [ref=e115]:
+              - generic [ref=e116]: 🥘
+              - generic [ref=e117]: dinner
+              - generic [ref=e118]: Beef Stew
+        - link "Sunday Apr 12 🥣 breakfast Greek Yogurt Bowl 🍚 lunch Grain Bowl 🐟 dinner Grilled Salmon Sunday roast tradition. Leftovers for Monday lunch." [ref=e119] [cursor=pointer]:
+          - /url: /day/2026-04-12
+          - generic [ref=e120]:
+            - heading "Sunday" [level=2] [ref=e121]
+            - generic [ref=e122]: Apr 12
+          - list [ref=e123]:
+            - listitem [ref=e124]:
+              - generic [ref=e125]: 🥣
+              - generic [ref=e126]: breakfast
+              - generic [ref=e127]: Greek Yogurt Bowl
+            - listitem [ref=e128]:
+              - generic [ref=e129]: 🍚
+              - generic [ref=e130]: lunch
+              - generic [ref=e131]: Grain Bowl
+            - listitem [ref=e132]:
+              - generic [ref=e133]: 🐟
+              - generic [ref=e134]: dinner
+              - generic [ref=e135]: Grilled Salmon
+          - paragraph [ref=e136]: Sunday roast tradition. Leftovers for Monday lunch.
+  - button "Open Next.js Dev Tools" [ref=e142] [cursor=pointer]:
+    - img [ref=e143]

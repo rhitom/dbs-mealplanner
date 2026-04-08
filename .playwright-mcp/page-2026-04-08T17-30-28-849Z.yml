@@ -1,0 +1,493 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "← Back to week" [ref=e5] [cursor=pointer]:
+          - /url: /
+        - heading "Grocery List" [level=1] [ref=e6]
+        - paragraph [ref=e7]: Plan your meals for the week, then check off groceries as you shop
+    - main [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - heading "Weekly Meals" [level=2] [ref=e11]
+          - generic [ref=e12]:
+            - generic [ref=e13]:
+              - heading "Mon Apr 6" [level=3] [ref=e14]
+              - generic [ref=e15]:
+                - generic [ref=e16]:
+                  - generic [ref=e17]: breakfast
+                  - button "🥑 Avocado Toast" [ref=e18]:
+                    - generic [ref=e19]: 🥑 Avocado Toast
+                - generic [ref=e20]:
+                  - generic [ref=e21]: lunch
+                  - button "🥗 Caesar Salad" [ref=e22]:
+                    - generic [ref=e23]: 🥗 Caesar Salad
+                - generic [ref=e24]:
+                  - generic [ref=e25]: dinner
+                  - button "🐟 Grilled Salmon" [ref=e26]:
+                    - generic [ref=e27]: 🐟 Grilled Salmon
+            - generic [ref=e28]:
+              - heading "Tue Apr 7" [level=3] [ref=e29]
+              - generic [ref=e30]:
+                - generic [ref=e31]:
+                  - generic [ref=e32]: breakfast
+                  - button "🥣 Greek Yogurt Bowl" [ref=e33]:
+                    - generic [ref=e34]: 🥣 Greek Yogurt Bowl
+                - generic [ref=e35]:
+                  - generic [ref=e36]: lunch
+                  - button "🍅 Tomato Soup" [ref=e494]:
+                    - generic [ref=e495]: 🍅 Tomato Soup
+                - generic [ref=e39]:
+                  - generic [ref=e40]: dinner
+                  - button "🍳 Chicken Stir-Fry" [ref=e41]:
+                    - generic [ref=e42]: 🍳 Chicken Stir-Fry
+            - generic [ref=e43]:
+              - heading "Wed Apr 8" [level=3] [ref=e44]
+              - generic [ref=e45]:
+                - generic [ref=e46]:
+                  - generic [ref=e47]: breakfast
+                  - button "🥑 Avocado Toast" [ref=e521]:
+                    - generic [ref=e522]: 🥑 Avocado Toast
+                - generic [ref=e50]:
+                  - generic [ref=e51]: lunch
+                  - button "🍅 Tomato Soup" [ref=e52]:
+                    - generic [ref=e53]: 🍅 Tomato Soup
+                - generic [ref=e54]:
+                  - generic [ref=e55]: dinner
+                  - button "🍝 Pasta Primavera" [ref=e56]:
+                    - generic [ref=e57]: 🍝 Pasta Primavera
+            - generic [ref=e58]:
+              - heading "Thu Apr 9" [level=3] [ref=e59]
+              - generic [ref=e60]:
+                - generic [ref=e61]:
+                  - generic [ref=e62]: breakfast
+                  - button "🥣 Greek Yogurt Bowl" [ref=e539]:
+                    - generic [ref=e540]: 🥣 Greek Yogurt Bowl
+                - generic [ref=e65]:
+                  - generic [ref=e66]: lunch
+                  - button "🍚 Grain Bowl" [ref=e67]:
+                    - generic [ref=e68]: 🍚 Grain Bowl
+                - generic [ref=e69]:
+                  - generic [ref=e70]: dinner
+                  - combobox [active] [ref=e590]:
+                    - option "— Empty —"
+                    - option "🥑 Avocado Toast"
+                    - option "🥣 Greek Yogurt Bowl"
+                    - option "🥤 Berry Smoothie"
+                    - option "🍳 Eggs Benedict"
+                    - option "🥞 Pancakes"
+                    - option "🍅 Tomato Soup"
+                    - option "🥗 Caesar Salad"
+                    - option "🍚 Grain Bowl"
+                    - option "🌯 Turkey Wrap"
+                    - option "🍜 Pho"
+                    - option "🍳 Chicken Stir-Fry"
+                    - option "🍝 Pasta Primavera"
+                    - option "🌮 Tacos" [selected]
+                    - option "🥘 Beef Stew"
+                    - option "🐟 Grilled Salmon"
+            - generic [ref=e73]:
+              - heading "Fri Apr 10" [level=3] [ref=e74]
+              - generic [ref=e75]:
+                - generic [ref=e76]:
+                  - generic [ref=e77]: breakfast
+                  - button "🥑 Avocado Toast" [ref=e556]:
+                    - generic [ref=e557]: 🥑 Avocado Toast
+                - generic [ref=e80]:
+                  - generic [ref=e81]: lunch
+                  - button "🥗 Caesar Salad" [ref=e572]:
+                    - generic [ref=e573]: 🥗 Caesar Salad
+                - generic [ref=e84]:
+                  - generic [ref=e85]: dinner
+                  - button "🍳 Chicken Stir-Fry" [ref=e86]:
+                    - generic [ref=e87]: 🍳 Chicken Stir-Fry
+            - generic [ref=e88]:
+              - heading "Sat Apr 11" [level=3] [ref=e89]
+              - generic [ref=e90]:
+                - generic [ref=e91]:
+                  - generic [ref=e92]: breakfast
+                  - button "🥑 Avocado Toast" [ref=e93]:
+                    - generic [ref=e94]: 🥑 Avocado Toast
+                - generic [ref=e95]:
+                  - generic [ref=e96]: lunch
+                  - button "🥗 Caesar Salad" [ref=e97]:
+                    - generic [ref=e98]: 🥗 Caesar Salad
+                - generic [ref=e99]:
+                  - generic [ref=e100]: dinner
+                  - button "🥘 Beef Stew" [ref=e101]:
+                    - generic [ref=e102]: 🥘 Beef Stew
+            - generic [ref=e103]:
+              - heading "Sun Apr 12" [level=3] [ref=e104]
+              - generic [ref=e105]:
+                - generic [ref=e106]:
+                  - generic [ref=e107]: breakfast
+                  - button "🥣 Greek Yogurt Bowl" [ref=e108]:
+                    - generic [ref=e109]: 🥣 Greek Yogurt Bowl
+                - generic [ref=e110]:
+                  - generic [ref=e111]: lunch
+                  - button "🍚 Grain Bowl" [ref=e112]:
+                    - generic [ref=e113]: 🍚 Grain Bowl
+                - generic [ref=e114]:
+                  - generic [ref=e115]: dinner
+                  - button "🐟 Grilled Salmon" [ref=e116]:
+                    - generic [ref=e117]: 🐟 Grilled Salmon
+        - generic [ref=e118]:
+          - heading "Shopping List (0/55)" [level=2] [ref=e574]
+          - generic [ref=e121]:
+            - generic [ref=e122] [cursor=pointer]:
+              - checkbox "2 /2 avocado 1/2 avocado, sliced — Grain Bowl 1/2 avocado, sliced — Grain Bowl" [ref=e123]
+              - generic [ref=e124]:
+                - text: 2 /2 avocado
+                - list [ref=e125]:
+                  - listitem [ref=e126]: 1/2 avocado, sliced — Grain Bowl
+                  - listitem [ref=e127]: 1/2 avocado, sliced — Grain Bowl
+            - generic [ref=e134] [cursor=pointer]:
+              - checkbox "3 /2 cup mixed berry 1/2 cup mixed berries — Greek Yogurt Bowl 1/2 cup mixed berries — Greek Yogurt Bowl 1/2 cup mixed berries — Greek Yogurt Bowl" [ref=e542]
+              - generic [ref=e136]:
+                - text: 3 /2 cup mixed berry
+                - list [ref=e137]:
+                  - listitem [ref=e138]: 1/2 cup mixed berries — Greek Yogurt Bowl
+                  - listitem [ref=e139]: 1/2 cup mixed berries — Greek Yogurt Bowl
+                  - listitem [ref=e543]: 1/2 cup mixed berries — Greek Yogurt Bowl
+            - generic [ref=e140] [cursor=pointer]:
+              - checkbox "1 /2 cup pea" [ref=e141]
+              - generic [ref=e142]: 1 /2 cup pea
+            - generic [ref=e143] [cursor=pointer]:
+              - checkbox "2 /2 cup roasted chickpea 1/2 cup roasted chickpeas — Grain Bowl 1/2 cup roasted chickpeas — Grain Bowl" [ref=e144]
+              - generic [ref=e145]:
+                - text: 2 /2 cup roasted chickpea
+                - list [ref=e146]:
+                  - listitem [ref=e147]: 1/2 cup roasted chickpeas — Grain Bowl
+                  - listitem [ref=e148]: 1/2 cup roasted chickpeas — Grain Bowl
+            - generic [ref=e149] [cursor=pointer]:
+              - checkbox "1 /2 cup shredded cheese" [ref=e150]
+              - generic [ref=e151]: 1 /2 cup shredded cheese
+            - generic [ref=e158] [cursor=pointer]:
+              - checkbox "3 /4 cup caesar dressing 1/4 cup Caesar dressing — Caesar Salad 1/4 cup Caesar dressing — Caesar Salad 1/4 cup Caesar dressing — Caesar Salad" [ref=e575]
+              - generic [ref=e160]:
+                - text: 3 /4 cup caesar dressing
+                - list [ref=e161]:
+                  - listitem [ref=e162]: 1/4 cup Caesar dressing — Caesar Salad
+                  - listitem [ref=e163]: 1/4 cup Caesar dressing — Caesar Salad
+                  - listitem [ref=e576]: 1/4 cup Caesar dressing — Caesar Salad
+            - generic [ref=e164] [cursor=pointer]:
+              - checkbox "3 /4 cup granola 1/4 cup granola — Greek Yogurt Bowl 1/4 cup granola — Greek Yogurt Bowl 1/4 cup granola — Greek Yogurt Bowl" [ref=e544]
+              - generic [ref=e166]:
+                - text: 3 /4 cup granola
+                - list [ref=e167]:
+                  - listitem [ref=e168]: 1/4 cup granola — Greek Yogurt Bowl
+                  - listitem [ref=e169]: 1/4 cup granola — Greek Yogurt Bowl
+                  - listitem [ref=e545]: 1/4 cup granola — Greek Yogurt Bowl
+            - generic [ref=e170] [cursor=pointer]:
+              - checkbox "2 /4 cup heavy cream 1/4 cup heavy cream — Tomato Soup 1/4 cup heavy cream — Tomato Soup" [ref=e497]
+              - generic [ref=e172]:
+                - text: 2 /4 cup heavy cream
+                - list [ref=e498]:
+                  - listitem [ref=e499]: 1/4 cup heavy cream — Tomato Soup
+                  - listitem [ref=e500]: 1/4 cup heavy cream — Tomato Soup
+            - generic [ref=e173] [cursor=pointer]:
+              - checkbox "1 /4 cup parmesan" [ref=e174]
+              - generic [ref=e175]: 1 /4 cup parmesan
+            - generic [ref=e176] [cursor=pointer]:
+              - checkbox "3 /4 cup shaved parmesan 1/4 cup shaved parmesan — Caesar Salad 1/4 cup shaved parmesan — Caesar Salad 1/4 cup shaved parmesan — Caesar Salad" [ref=e577]
+              - generic [ref=e178]:
+                - text: 3 /4 cup shaved parmesan
+                - list [ref=e179]:
+                  - listitem [ref=e180]: 1/4 cup shaved parmesan — Caesar Salad
+                  - listitem [ref=e181]: 1/4 cup shaved parmesan — Caesar Salad
+                  - listitem [ref=e578]: 1/4 cup shaved parmesan — Caesar Salad
+            - generic [ref=e194] [cursor=pointer]:
+              - checkbox "2 cup Beef broth" [ref=e579]
+              - generic [ref=e196]: 2 cup Beef broth
+            - generic [ref=e200] [cursor=pointer]:
+              - checkbox "1 1/2 lb Beef chuck" [ref=e201]
+              - generic [ref=e202]: 1 1/2 lb Beef chuck
+            - generic [ref=e203] [cursor=pointer]:
+              - checkbox "2 Bell pepper 1 bell pepper — Chicken Stir-Fry 1 bell pepper — Chicken Stir-Fry" [ref=e204]
+              - generic [ref=e205]:
+                - text: 2 Bell pepper
+                - list [ref=e206]:
+                  - listitem [ref=e207]: 1 bell pepper — Chicken Stir-Fry
+                  - listitem [ref=e208]: 1 bell pepper — Chicken Stir-Fry
+            - generic [ref=e209] [cursor=pointer]:
+              - checkbox "Black pepper Black pepper — Caesar Salad Black pepper — Caesar Salad Black pepper — Caesar Salad" [ref=e580]
+              - generic [ref=e211]:
+                - text: Black pepper
+                - list [ref=e212]:
+                  - listitem [ref=e213]: Black pepper — Caesar Salad
+                  - listitem [ref=e214]: Black pepper — Caesar Salad
+                  - listitem [ref=e581]: Black pepper — Caesar Salad
+            - generic [ref=e215] [cursor=pointer]:
+              - checkbox "2 cup Broccoli floret 1 cup broccoli florets — Chicken Stir-Fry 1 cup broccoli florets — Chicken Stir-Fry" [ref=e216]
+              - generic [ref=e217]:
+                - text: 2 cup Broccoli floret
+                - list [ref=e218]:
+                  - listitem [ref=e219]: 1 cup broccoli florets — Chicken Stir-Fry
+                  - listitem [ref=e220]: 1 cup broccoli florets — Chicken Stir-Fry
+            - generic [ref=e221] [cursor=pointer]:
+              - checkbox "4 tbsp Butter 2 tbsp butter — Tomato Soup 2 tbsp butter — Tomato Soup" [ref=e501]
+              - generic [ref=e223]:
+                - text: 4 tbsp Butter
+                - list [ref=e502]:
+                  - listitem [ref=e503]: 2 tbsp butter — Tomato Soup
+                  - listitem [ref=e504]: 2 tbsp butter — Tomato Soup
+            - generic [ref=e227] [cursor=pointer]:
+              - checkbox "3 Carrot" [ref=e228]
+              - generic [ref=e229]: 3 Carrot
+            - generic [ref=e230] [cursor=pointer]:
+              - checkbox "1 cup Cherry tomatoe 1 cup cherry tomatoes — Pasta Primavera Cherry tomatoes — Grain Bowl Cherry tomatoes — Grain Bowl" [ref=e231]
+              - generic [ref=e232]:
+                - text: 1 cup Cherry tomatoe
+                - list [ref=e233]:
+                  - listitem [ref=e234]: 1 cup cherry tomatoes — Pasta Primavera
+                  - listitem [ref=e235]: Cherry tomatoes — Grain Bowl
+                  - listitem [ref=e236]: Cherry tomatoes — Grain Bowl
+            - generic [ref=e237] [cursor=pointer]:
+              - checkbox "3 tbsp Chia seed 1 tbsp chia seeds — Greek Yogurt Bowl 1 tbsp chia seeds — Greek Yogurt Bowl 1 tbsp chia seeds — Greek Yogurt Bowl" [ref=e546]
+              - generic [ref=e239]:
+                - text: 3 tbsp Chia seed
+                - list [ref=e240]:
+                  - listitem [ref=e241]: 1 tbsp chia seeds — Greek Yogurt Bowl
+                  - listitem [ref=e242]: 1 tbsp chia seeds — Greek Yogurt Bowl
+                  - listitem [ref=e547]: 1 tbsp chia seeds — Greek Yogurt Bowl
+            - generic [ref=e243] [cursor=pointer]:
+              - checkbox "4 Chicken breast 2 chicken breasts, sliced — Chicken Stir-Fry 2 chicken breasts, sliced — Chicken Stir-Fry" [ref=e244]
+              - generic [ref=e245]:
+                - text: 4 Chicken breast
+                - list [ref=e246]:
+                  - listitem [ref=e247]: 2 chicken breasts, sliced — Chicken Stir-Fry
+                  - listitem [ref=e248]: 2 chicken breasts, sliced — Chicken Stir-Fry
+            - generic [ref=e249] [cursor=pointer]:
+              - checkbox "2 cup Cooked quinoa 1 cup cooked quinoa — Grain Bowl 1 cup cooked quinoa — Grain Bowl" [ref=e250]
+              - generic [ref=e251]:
+                - text: 2 cup Cooked quinoa
+                - list [ref=e252]:
+                  - listitem [ref=e253]: 1 cup cooked quinoa — Grain Bowl
+                  - listitem [ref=e254]: 1 cup cooked quinoa — Grain Bowl
+            - generic [ref=e255] [cursor=pointer]:
+              - checkbox "3 cup Crouton 1 cup croutons — Caesar Salad 1 cup croutons — Caesar Salad 1 cup croutons — Caesar Salad" [ref=e582]
+              - generic [ref=e257]:
+                - text: 3 cup Crouton
+                - list [ref=e258]:
+                  - listitem [ref=e259]: 1 cup croutons — Caesar Salad
+                  - listitem [ref=e260]: 1 cup croutons — Caesar Salad
+                  - listitem [ref=e583]: 1 cup croutons — Caesar Salad
+            - generic [ref=e261] [cursor=pointer]:
+              - checkbox "2 can Crushed tomatoe 1 can (28 oz) crushed tomatoes — Tomato Soup 1 can (28 oz) crushed tomatoes — Tomato Soup" [ref=e505]
+              - generic [ref=e263]:
+                - text: 2 can Crushed tomatoe
+                - list [ref=e506]:
+                  - listitem [ref=e507]: 1 can (28 oz) crushed tomatoes — Tomato Soup
+                  - listitem [ref=e508]: 1 can (28 oz) crushed tomatoes — Tomato Soup
+            - generic [ref=e267] [cursor=pointer]:
+              - checkbox "8 Egg 2 eggs (optional) — Avocado Toast 2 eggs (optional) — Avocado Toast 2 eggs (optional) — Avocado Toast 2 eggs (optional) — Avocado Toast" [ref=e559]
+              - generic [ref=e269]:
+                - text: 8 Egg
+                - list [ref=e270]:
+                  - listitem [ref=e271]: 2 eggs (optional) — Avocado Toast
+                  - listitem [ref=e272]: 2 eggs (optional) — Avocado Toast
+                  - listitem [ref=e273]: 2 eggs (optional) — Avocado Toast
+                  - listitem [ref=e274]: 2 eggs (optional) — Avocado Toast
+            - generic [ref=e281] [cursor=pointer]:
+              - checkbox "2 tbsp Flour" [ref=e549]
+              - generic [ref=e283]: 2 tbsp Flour
+            - generic [ref=e287] [cursor=pointer]:
+              - checkbox "Fresh basil Fresh basil — Tomato Soup Fresh basil — Tomato Soup Fresh basil — Pasta Primavera" [ref=e509]
+              - generic [ref=e289]:
+                - text: Fresh basil
+                - list [ref=e290]:
+                  - listitem [ref=e291]: Fresh basil — Tomato Soup
+                  - listitem [ref=e292]: Fresh basil — Tomato Soup
+                  - listitem [ref=e510]: Fresh basil — Pasta Primavera
+            - generic [ref=e293] [cursor=pointer]:
+              - checkbox "Fresh dill Fresh dill — Grilled Salmon Fresh dill — Grilled Salmon" [ref=e294]
+              - generic [ref=e295]:
+                - text: Fresh dill
+                - list [ref=e296]:
+                  - listitem [ref=e297]: Fresh dill — Grilled Salmon
+                  - listitem [ref=e298]: Fresh dill — Grilled Salmon
+            - generic [ref=e302] [cursor=pointer]:
+              - checkbox "10 clove Garlic 2 cloves garlic, minced — Grilled Salmon 2 cloves garlic — Tomato Soup 1 clove garlic, minced — Chicken Stir-Fry 2 cloves garlic — Tomato Soup 1 clove garlic, minced — Chicken Stir-Fry 2 cloves garlic, minced — Grilled Salmon" [ref=e511]
+              - generic [ref=e304]:
+                - text: 10 clove Garlic
+                - list [ref=e305]:
+                  - listitem [ref=e306]: 2 cloves garlic, minced — Grilled Salmon
+                  - listitem [ref=e307]: 2 cloves garlic — Tomato Soup
+                  - listitem [ref=e308]: 1 clove garlic, minced — Chicken Stir-Fry
+                  - listitem [ref=e309]: 2 cloves garlic — Tomato Soup
+                  - listitem [ref=e310]: 1 clove garlic, minced — Chicken Stir-Fry
+                  - listitem [ref=e512]: 2 cloves garlic, minced — Grilled Salmon
+            - generic [ref=e311] [cursor=pointer]:
+              - checkbox "3 cup Greek yogurt 1 cup Greek yogurt — Greek Yogurt Bowl 1 cup Greek yogurt — Greek Yogurt Bowl 1 cup Greek yogurt — Greek Yogurt Bowl" [ref=e550]
+              - generic [ref=e313]:
+                - text: 3 cup Greek yogurt
+                - list [ref=e314]:
+                  - listitem [ref=e315]: 1 cup Greek yogurt — Greek Yogurt Bowl
+                  - listitem [ref=e316]: 1 cup Greek yogurt — Greek Yogurt Bowl
+                  - listitem [ref=e551]: 1 cup Greek yogurt — Greek Yogurt Bowl
+            - generic [ref=e317] [cursor=pointer]:
+              - checkbox "1 lb Ground beef" [ref=e318]
+              - generic [ref=e319]: 1 lb Ground beef
+            - generic [ref=e320] [cursor=pointer]:
+              - checkbox "3 tbsp Honey 1 tbsp honey — Greek Yogurt Bowl 1 tbsp honey — Greek Yogurt Bowl 1 tbsp honey — Greek Yogurt Bowl" [ref=e552]
+              - generic [ref=e322]:
+                - text: 3 tbsp Honey
+                - list [ref=e323]:
+                  - listitem [ref=e324]: 1 tbsp honey — Greek Yogurt Bowl
+                  - listitem [ref=e325]: 1 tbsp honey — Greek Yogurt Bowl
+                  - listitem [ref=e553]: 1 tbsp honey — Greek Yogurt Bowl
+            - generic [ref=e330] [cursor=pointer]:
+              - checkbox "11 Lemon 1 lemon — Avocado Toast 1 lemon — Caesar Salad 2 lemons — Grilled Salmon 1 lemon — Avocado Toast 1 lemon — Avocado Toast 1 lemon — Caesar Salad 1 lemon — Avocado Toast 1 lemon — Caesar Salad 2 lemons — Grilled Salmon" [ref=e584]
+              - generic [ref=e332]:
+                - text: 11 Lemon
+                - list [ref=e333]:
+                  - listitem [ref=e334]: 1 lemon — Avocado Toast
+                  - listitem [ref=e335]: 1 lemon — Caesar Salad
+                  - listitem [ref=e336]: 2 lemons — Grilled Salmon
+                  - listitem [ref=e337]: 1 lemon — Avocado Toast
+                  - listitem [ref=e338]: 1 lemon — Avocado Toast
+                  - listitem [ref=e339]: 1 lemon — Caesar Salad
+                  - listitem [ref=e528]: 1 lemon — Avocado Toast
+                  - listitem [ref=e561]: 1 lemon — Caesar Salad
+                  - listitem [ref=e585]: 2 lemons — Grilled Salmon
+            - generic [ref=e355] [cursor=pointer]:
+              - checkbox "2 cup Mixed green 1 cup mixed greens — Grain Bowl 1 cup mixed greens — Grain Bowl" [ref=e356]
+              - generic [ref=e357]:
+                - text: 2 cup Mixed green
+                - list [ref=e358]:
+                  - listitem [ref=e359]: 1 cup mixed greens — Grain Bowl
+                  - listitem [ref=e360]: 1 cup mixed greens — Grain Bowl
+            - generic [ref=e361] [cursor=pointer]:
+              - checkbox "6 tbsp Olive oil 2 tbsp olive oil — Grilled Salmon 2 tbsp olive oil — Pasta Primavera 2 tbsp olive oil — Grilled Salmon" [ref=e362]
+              - generic [ref=e363]:
+                - text: 6 tbsp Olive oil
+                - list [ref=e364]:
+                  - listitem [ref=e365]: 2 tbsp olive oil — Grilled Salmon
+                  - listitem [ref=e366]: 2 tbsp olive oil — Pasta Primavera
+                  - listitem [ref=e367]: 2 tbsp olive oil — Grilled Salmon
+            - generic [ref=e368] [cursor=pointer]:
+              - checkbox "3 Onion 1 onion, diced — Tomato Soup 1 onion, diced — Tomato Soup 1 onion, chopped — Beef Stew" [ref=e586]
+              - generic [ref=e370]:
+                - text: 3 Onion
+                - list [ref=e371]:
+                  - listitem [ref=e372]: 1 onion, diced — Tomato Soup
+                  - listitem [ref=e373]: 1 onion, diced — Tomato Soup
+                  - listitem [ref=e374]: 1 onion, chopped — Beef Stew
+            - generic [ref=e375] [cursor=pointer]:
+              - checkbox "12 oz Penne pasta" [ref=e376]
+              - generic [ref=e377]: 12 oz Penne pasta
+            - generic [ref=e378] [cursor=pointer]:
+              - checkbox "3 Potatoe" [ref=e379]
+              - generic [ref=e380]: 3 Potatoe
+            - generic [ref=e381] [cursor=pointer]:
+              - checkbox "Red pepper flake Red pepper flakes — Avocado Toast Red pepper flakes — Avocado Toast Red pepper flakes — Avocado Toast Red pepper flakes — Avocado Toast" [ref=e562]
+              - generic [ref=e383]:
+                - text: Red pepper flake
+                - list [ref=e384]:
+                  - listitem [ref=e385]: Red pepper flakes — Avocado Toast
+                  - listitem [ref=e386]: Red pepper flakes — Avocado Toast
+                  - listitem [ref=e530]: Red pepper flakes — Avocado Toast
+                  - listitem [ref=e563]: Red pepper flakes — Avocado Toast
+            - generic [ref=e387] [cursor=pointer]:
+              - checkbox "Rice for serving Rice for serving — Chicken Stir-Fry Rice for serving — Chicken Stir-Fry" [ref=e388]
+              - generic [ref=e389]:
+                - text: Rice for serving
+                - list [ref=e390]:
+                  - listitem [ref=e391]: Rice for serving — Chicken Stir-Fry
+                  - listitem [ref=e392]: Rice for serving — Chicken Stir-Fry
+            - generic [ref=e396] [cursor=pointer]:
+              - checkbox "4 Ripe avocado 1 ripe avocado — Avocado Toast 1 ripe avocado — Avocado Toast 1 ripe avocado — Avocado Toast 1 ripe avocado — Avocado Toast" [ref=e564]
+              - generic [ref=e398]:
+                - text: 4 Ripe avocado
+                - list [ref=e399]:
+                  - listitem [ref=e400]: 1 ripe avocado — Avocado Toast
+                  - listitem [ref=e401]: 1 ripe avocado — Avocado Toast
+                  - listitem [ref=e532]: 1 ripe avocado — Avocado Toast
+                  - listitem [ref=e565]: 1 ripe avocado — Avocado Toast
+            - generic [ref=e402] [cursor=pointer]:
+              - checkbox "3 head Romaine lettuce 1 head romaine lettuce — Caesar Salad 1 head romaine lettuce — Caesar Salad 1 head romaine lettuce — Caesar Salad" [ref=e587]
+              - generic [ref=e404]:
+                - text: 3 head Romaine lettuce
+                - list [ref=e405]:
+                  - listitem [ref=e406]: 1 head romaine lettuce — Caesar Salad
+                  - listitem [ref=e407]: 1 head romaine lettuce — Caesar Salad
+                  - listitem [ref=e588]: 1 head romaine lettuce — Caesar Salad
+            - generic [ref=e408] [cursor=pointer]:
+              - checkbox "8 Salmon fillet 4 salmon fillets — Grilled Salmon 4 salmon fillets — Grilled Salmon" [ref=e409]
+              - generic [ref=e410]:
+                - text: 8 Salmon fillet
+                - list [ref=e411]:
+                  - listitem [ref=e412]: 4 salmon fillets — Grilled Salmon
+                  - listitem [ref=e413]: 4 salmon fillets — Grilled Salmon
+            - generic [ref=e414] [cursor=pointer]:
+              - checkbox "Salsa and sour cream" [ref=e415]
+              - generic [ref=e416]: Salsa and sour cream
+            - generic [ref=e417] [cursor=pointer]:
+              - checkbox "Salt and pepper Salt and pepper — Avocado Toast Salt and pepper — Grilled Salmon Salt and pepper — Avocado Toast Salt and pepper — Avocado Toast Salt and pepper — Avocado Toast Salt and pepper — Grilled Salmon" [ref=e566]
+              - generic [ref=e419]:
+                - text: Salt and pepper
+                - list [ref=e420]:
+                  - listitem [ref=e421]: Salt and pepper — Avocado Toast
+                  - listitem [ref=e422]: Salt and pepper — Grilled Salmon
+                  - listitem [ref=e423]: Salt and pepper — Avocado Toast
+                  - listitem [ref=e424]: Salt and pepper — Avocado Toast
+                  - listitem [ref=e534]: Salt and pepper — Avocado Toast
+                  - listitem [ref=e567]: Salt and pepper — Grilled Salmon
+            - generic [ref=e425] [cursor=pointer]:
+              - checkbox "2 tbsp Sesame oil 1 tbsp sesame oil — Chicken Stir-Fry 1 tbsp sesame oil — Chicken Stir-Fry" [ref=e426]
+              - generic [ref=e427]:
+                - text: 2 tbsp Sesame oil
+                - list [ref=e428]:
+                  - listitem [ref=e429]: 1 tbsp sesame oil — Chicken Stir-Fry
+                  - listitem [ref=e430]: 1 tbsp sesame oil — Chicken Stir-Fry
+            - generic [ref=e431] [cursor=pointer]:
+              - checkbox "1 cup Shredded lettuce" [ref=e432]
+              - generic [ref=e433]: 1 cup Shredded lettuce
+            - generic [ref=e434] [cursor=pointer]:
+              - checkbox "8 Small tortilla" [ref=e435]
+              - generic [ref=e436]: 8 Small tortilla
+            - generic [ref=e437] [cursor=pointer]:
+              - checkbox "8 slice Sourdough bread 2 slices sourdough bread — Avocado Toast 2 slices sourdough bread — Avocado Toast 2 slices sourdough bread — Avocado Toast 2 slices sourdough bread — Avocado Toast" [ref=e568]
+              - generic [ref=e439]:
+                - text: 8 slice Sourdough bread
+                - list [ref=e440]:
+                  - listitem [ref=e441]: 2 slices sourdough bread — Avocado Toast
+                  - listitem [ref=e442]: 2 slices sourdough bread — Avocado Toast
+                  - listitem [ref=e536]: 2 slices sourdough bread — Avocado Toast
+                  - listitem [ref=e569]: 2 slices sourdough bread — Avocado Toast
+            - generic [ref=e443] [cursor=pointer]:
+              - checkbox "4 tbsp Soy sauce 2 tbsp soy sauce — Chicken Stir-Fry 2 tbsp soy sauce — Chicken Stir-Fry" [ref=e444]
+              - generic [ref=e445]:
+                - text: 4 tbsp Soy sauce
+                - list [ref=e446]:
+                  - listitem [ref=e447]: 2 tbsp soy sauce — Chicken Stir-Fry
+                  - listitem [ref=e448]: 2 tbsp soy sauce — Chicken Stir-Fry
+            - generic [ref=e458] [cursor=pointer]:
+              - checkbox "1 packet Taco seasoning" [ref=e459]
+              - generic [ref=e460]: 1 packet Taco seasoning
+            - generic [ref=e461] [cursor=pointer]:
+              - checkbox "4 tbsp Tahini dressing 2 tbsp tahini dressing — Grain Bowl 2 tbsp tahini dressing — Grain Bowl" [ref=e462]
+              - generic [ref=e463]:
+                - text: 4 tbsp Tahini dressing
+                - list [ref=e464]:
+                  - listitem [ref=e465]: 2 tbsp tahini dressing — Grain Bowl
+                  - listitem [ref=e466]: 2 tbsp tahini dressing — Grain Bowl
+            - generic [ref=e467] [cursor=pointer]:
+              - checkbox "Thyme and bay leaf" [ref=e468]
+              - generic [ref=e469]: Thyme and bay leaf
+            - generic [ref=e473] [cursor=pointer]:
+              - checkbox "2 tbsp Tomato paste" [ref=e474]
+              - generic [ref=e475]: 2 tbsp Tomato paste
+            - generic [ref=e476] [cursor=pointer]:
+              - checkbox "2 cup Vegetable broth 1 cup vegetable broth — Tomato Soup 1 cup vegetable broth — Tomato Soup" [ref=e515]
+              - generic [ref=e478]:
+                - text: 2 cup Vegetable broth
+                - list [ref=e516]:
+                  - listitem [ref=e517]: 1 cup vegetable broth — Tomato Soup
+                  - listitem [ref=e518]: 1 cup vegetable broth — Tomato Soup
+            - generic [ref=e479] [cursor=pointer]:
+              - checkbox "1 Zucchini" [ref=e480]
+              - generic [ref=e481]: 1 Zucchini
+  - button "Open Next.js Dev Tools" [ref=e487] [cursor=pointer]:
+    - img [ref=e488]
+  - alert [ref=e491]
