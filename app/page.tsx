@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMealPlanner } from "./context";
+import { getRecipe } from "./data";
 
 const DAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -18,7 +19,6 @@ const TODAY = "2026-04-08";
 export default function Home() {
   const { days } = useMealPlanner();
 
-  // Show the 7 days of the current week (Apr 6–12)
   const weekDates = [
     "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09",
     "2026-04-10", "2026-04-11", "2026-04-12",
@@ -82,15 +82,22 @@ export default function Home() {
 
                 {meals.length > 0 ? (
                   <ul className="space-y-2">
-                    {meals.slice(0, 3).map((meal, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm">
-                        <span className="text-base">{meal.emoji}</span>
-                        <span className="text-zinc-500 w-16 shrink-0 capitalize">
-                          {meal.type}
-                        </span>
-                        <span className="text-zinc-800 truncate">{meal.name}</span>
-                      </li>
-                    ))}
+                    {meals.slice(0, 3).map((meal, i) => {
+                      const recipe = getRecipe(meal.recipeId);
+                      if (!recipe) return null;
+                      return (
+                        <li key={i} className="flex items-center gap-2 text-sm">
+                          <span className="text-base">{recipe.emoji}</span>
+                          <span className="text-zinc-500 w-16 shrink-0 capitalize">
+                            {meal.type}
+                          </span>
+                          <span className="text-zinc-800 truncate">
+                            {recipe.name}
+                            {meal.isLeftover && " (leftover)"}
+                          </span>
+                        </li>
+                      );
+                    })}
                     {meals.length > 3 && (
                       <li className="text-xs text-zinc-400">
                         +{meals.length - 3} more

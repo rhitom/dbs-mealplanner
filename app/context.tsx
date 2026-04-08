@@ -6,7 +6,7 @@ import { weekData as initialData, DayPlan, Meal, TimeBlock } from "./data";
 interface MealPlannerContextType {
   days: DayPlan[];
   favorites: Set<string>;
-  addMeal: (date: string, meal: Meal) => void;
+  addMealToPlan: (date: string, recipeId: string, mealType: Meal["type"]) => void;
   addNote: (date: string, note: string) => void;
   addTimeBlock: (date: string, block: TimeBlock) => void;
   addLeftover: (fromDate: string, mealIndex: number, toDate: string, toMealType: Meal["type"]) => void;
@@ -16,28 +16,33 @@ interface MealPlannerContextType {
 
 const MealPlannerContext = createContext<MealPlannerContextType | null>(null);
 
+function ensureDayExists(days: DayPlan[], date: string): DayPlan[] {
+  return days.find((d) => d.date === date)
+    ? days
+    : [...days, { date, meals: [], schedule: [] }];
+}
+
 export function MealPlannerProvider({ children }: { children: ReactNode }) {
   const [days, setDays] = useState<DayPlan[]>(initialData);
   const [favorites, setFavorites] = useState<Set<string>>(
     new Set(["avocado-toast", "tacos", "grilled-salmon"])
   );
 
-  function addMeal(date: string, meal: Meal) {
+  function addMealToPlan(date: string, recipeId: string, mealType: Meal["type"]) {
     setDays((prev) => {
-      const updated = prev.find((d) => d.date === date)
-        ? prev
-        : [...prev, { date, meals: [], schedule: [] }];
-      return updated.map((d) =>
-        d.date === date ? { ...d, meals: [...d.meals, meal] } : d
-      );
+      const updated = ensureDayExists(prev, date);
+      return updated.map((d) => {
+        if (d.date !== date) return d;
+        // Replace existing meal of same type, or add
+        const meals = d.meals.filter((m) => m.type !== mealType);
+        return { ...d, meals: [...meals, { type: mealType, recipeId }] };
+      });
     });
   }
 
   function addNote(date: string, note: string) {
     setDays((prev) => {
-      const updated = prev.find((d) => d.date === date)
-        ? prev
-        : [...prev, { date, meals: [], schedule: [] }];
+      const updated = ensureDayExists(prev, date);
       return updated.map((d) =>
         d.date === date
           ? { ...d, note: d.note ? `${d.note}\n${note}` : note }
@@ -48,9 +53,7 @@ export function MealPlannerProvider({ children }: { children: ReactNode }) {
 
   function addTimeBlock(date: string, block: TimeBlock) {
     setDays((prev) => {
-      const updated = prev.find((d) => d.date === date)
-        ? prev
-        : [...prev, { date, meals: [], schedule: [] }];
+      const updated = ensureDayExists(prev, date);
       return updated.map((d) =>
         d.date === date
           ? {
@@ -71,17 +74,12 @@ export function MealPlannerProvider({ children }: { children: ReactNode }) {
 
       const originalMeal = sourceDay.meals[mealIndex];
       const leftoverMeal: Meal = {
-        ...originalMeal,
         type: toMealType,
-        name: `${originalMeal.name} (leftover)`,
+        recipeId: originalMeal.recipeId,
         isLeftover: true,
-        prepTime: "5 min",
       };
 
-      let updated = prev.find((d) => d.date === toDate)
-        ? prev
-        : [...prev, { date: toDate, meals: [], schedule: [] }];
-
+      let updated = ensureDayExists(prev, toDate);
       return updated.map((d) => {
         if (d.date !== toDate) return d;
         const meals = d.meals.filter((m) => m.type !== toMealType);
@@ -108,7 +106,7 @@ export function MealPlannerProvider({ children }: { children: ReactNode }) {
 
   return (
     <MealPlannerContext.Provider
-      value={{ days, favorites, addMeal, addNote, addTimeBlock, addLeftover, toggleFavorite, isFavorite }}
+      value={{ days, favorites, addMealToPlan, addNote, addTimeBlock, addLeftover, toggleFavorite, isFavorite }}
     >
       {children}
     </MealPlannerContext.Provider>

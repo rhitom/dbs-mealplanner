@@ -4,16 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useMealPlanner } from "../../context";
-import { recipeCatalog } from "../../data";
+import { getRecipe } from "../../data";
 import type { Meal } from "../../data";
-
-function findRecipeId(mealName: string): string | null {
-  const cleaned = mealName.replace(/\s*\(leftover\)$/i, "");
-  const recipe = recipeCatalog.find(
-    (r) => r.name.toLowerCase() === cleaned.toLowerCase()
-  );
-  return recipe?.id ?? null;
-}
 
 const TODAY = "2026-04-08";
 
@@ -71,35 +63,18 @@ function LeftoverPicker({
     <form onSubmit={handleSubmit} className="mt-3 bg-zinc-50 border border-zinc-200 rounded-lg p-3 space-y-2">
       <p className="text-xs font-medium text-zinc-700">Save leftover to:</p>
       <div className="flex gap-2">
-        <input
-          type="date"
-          value={toDate}
-          onChange={(e) => setToDate(e.target.value)}
-          className={inputClass}
-          required
-        />
-        <select
-          value={toType}
-          onChange={(e) => setToType(e.target.value as Meal["type"])}
-          className={inputClass}
-        >
+        <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} className={inputClass} required />
+        <select value={toType} onChange={(e) => setToType(e.target.value as Meal["type"])} className={inputClass}>
           <option value="breakfast">Breakfast</option>
           <option value="lunch">Lunch</option>
           <option value="dinner">Dinner</option>
         </select>
       </div>
       <div className="flex gap-2">
-        <button
-          type="submit"
-          className="bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-md hover:bg-blue-700 transition-colors"
-        >
+        <button type="submit" className="bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-md hover:bg-blue-700 transition-colors">
           Add Leftover
         </button>
-        <button
-          type="button"
-          onClick={onClose}
-          className="text-xs text-zinc-500 hover:text-zinc-700"
-        >
+        <button type="button" onClick={onClose} className="text-xs text-zinc-500 hover:text-zinc-700">
           Cancel
         </button>
       </div>
@@ -189,42 +164,31 @@ export default function DayPage() {
           {day.meals.length > 0 ? (
             <div className="grid gap-4 sm:grid-cols-3">
               {day.meals.map((meal, i) => {
-                const recipeId = findRecipeId(meal.name);
-                const cardContent = (
-                  <>
-                    {meal.isLeftover && (
-                      <span className="absolute top-2 right-2 text-[10px] font-semibold bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full uppercase tracking-wide">
-                        Leftover
-                      </span>
-                    )}
-                    <span className="text-4xl mb-3">{meal.emoji}</span>
-                    <p className="text-xs font-medium text-zinc-400 uppercase tracking-wide">
-                      {meal.type}
-                    </p>
-                    <p className="text-base font-semibold text-zinc-900 mt-1">
-                      {meal.name}
-                    </p>
-                    {meal.prepTime && (
-                      <p className="mt-3 text-xs text-zinc-500">⏱ {meal.prepTime}</p>
-                    )}
-                    {recipeId && (
-                      <p className="mt-1 text-xs text-blue-500">View recipe →</p>
-                    )}
-                  </>
-                );
+                const recipe = getRecipe(meal.recipeId);
+                if (!recipe) return null;
 
                 return (
                   <div
                     key={i}
                     className="bg-white rounded-xl border border-zinc-200 p-5 flex flex-col items-center text-center hover:shadow-md transition-shadow relative"
                   >
-                    {recipeId ? (
-                      <Link href={`/recipes/${recipeId}?from=/day/${date}`} className="flex flex-col items-center">
-                        {cardContent}
-                      </Link>
-                    ) : (
-                      cardContent
+                    {meal.isLeftover && (
+                      <span className="absolute top-2 right-2 text-[10px] font-semibold bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full uppercase tracking-wide">
+                        Leftover
+                      </span>
                     )}
+                    <Link href={`/recipes/${recipe.id}?from=/day/${date}`} className="flex flex-col items-center">
+                      <span className="text-4xl mb-3">{recipe.emoji}</span>
+                      <p className="text-xs font-medium text-zinc-400 uppercase tracking-wide">
+                        {meal.type}
+                      </p>
+                      <p className="text-base font-semibold text-zinc-900 mt-1">
+                        {recipe.name}
+                        {meal.isLeftover && " (leftover)"}
+                      </p>
+                      <p className="mt-2 text-xs text-zinc-500">⏱ {meal.isLeftover ? "5 min" : recipe.prepTime}</p>
+                      <p className="mt-1 text-xs text-blue-500">View recipe →</p>
+                    </Link>
                     {!meal.isLeftover && (
                       <>
                         <button

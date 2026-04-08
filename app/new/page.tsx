@@ -3,27 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useMealPlanner } from "../context";
-import type { Meal } from "../data";
 
-const TABS = ["Recipe", "Note", "Time Block"] as const;
+const TABS = ["Note", "Time Block"] as const;
 type Tab = (typeof TABS)[number];
 
-const EMOJI_OPTIONS = [
-  "🍳", "🥗", "🍝", "🍕", "🌮", "🍜", "🥘", "🍲",
-  "🥪", "🍣", "🥑", "🍗", "🐟", "🥞", "🥤", "🍞",
-];
-
 export default function NewPage() {
-  const { addMeal, addNote, addTimeBlock } = useMealPlanner();
-  const [activeTab, setActiveTab] = useState<Tab>("Recipe");
+  const { addNote, addTimeBlock } = useMealPlanner();
+  const [activeTab, setActiveTab] = useState<Tab>("Note");
   const [success, setSuccess] = useState<string | null>(null);
-
-  // Recipe form state
-  const [recipeDate, setRecipeDate] = useState("2026-04-08");
-  const [recipeName, setRecipeName] = useState("");
-  const [recipeType, setRecipeType] = useState<Meal["type"]>("breakfast");
-  const [recipeEmoji, setRecipeEmoji] = useState("🍳");
-  const [recipePrepTime, setRecipePrepTime] = useState("");
 
   // Note form state
   const [noteDate, setNoteDate] = useState("2026-04-08");
@@ -33,22 +20,6 @@ export default function NewPage() {
   const [blockDate, setBlockDate] = useState("2026-04-08");
   const [blockTime, setBlockTime] = useState("");
   const [blockLabel, setBlockLabel] = useState("");
-
-  function handleRecipeSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!recipeName.trim()) return;
-    const meal: Meal = {
-      type: recipeType,
-      name: recipeName.trim(),
-      emoji: recipeEmoji,
-      ...(recipePrepTime && { prepTime: recipePrepTime }),
-    };
-    addMeal(recipeDate, meal);
-    setSuccess(`Added "${meal.name}" to ${recipeDate}`);
-    setRecipeName("");
-    setRecipePrepTime("");
-    setTimeout(() => setSuccess(null), 3000);
-  }
 
   function handleNoteSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -84,6 +55,12 @@ export default function NewPage() {
           ← Back to week
         </Link>
         <h1 className="text-2xl font-bold text-zinc-900 mt-2">Add New</h1>
+        <p className="text-sm text-zinc-500 mt-1">
+          To add meals, use the{" "}
+          <Link href="/recipes" className="text-blue-600 hover:underline">
+            recipe bank
+          </Link>
+        </p>
       </header>
 
       <main className="max-w-lg mx-auto px-4 py-6">
@@ -108,51 +85,6 @@ export default function NewPage() {
             </button>
           ))}
         </div>
-
-        {activeTab === "Recipe" && (
-          <form onSubmit={handleRecipeSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-zinc-900 mb-1">Date</label>
-              <input type="date" value={recipeDate} onChange={(e) => setRecipeDate(e.target.value)} className={inputClass} required />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-zinc-900 mb-1">Meal Name</label>
-              <input type="text" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} placeholder="e.g. Chicken Parmesan" className={inputClass} required />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-zinc-900 mb-1">Meal Type</label>
-              <select value={recipeType} onChange={(e) => setRecipeType(e.target.value as Meal["type"])} className={inputClass}>
-                <option value="breakfast">Breakfast</option>
-                <option value="lunch">Lunch</option>
-                <option value="dinner">Dinner</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-zinc-900 mb-2">Emoji</label>
-              <div className="flex flex-wrap gap-2">
-                {EMOJI_OPTIONS.map((em) => (
-                  <button
-                    key={em}
-                    type="button"
-                    onClick={() => setRecipeEmoji(em)}
-                    className={`text-2xl p-1.5 rounded-lg border transition-colors ${
-                      recipeEmoji === em ? "border-blue-400 bg-blue-50" : "border-zinc-200 hover:border-zinc-300"
-                    }`}
-                  >
-                    {em}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-zinc-900 mb-1">Prep Time</label>
-              <input type="text" value={recipePrepTime} onChange={(e) => setRecipePrepTime(e.target.value)} placeholder="e.g. 20 min" className={inputClass} />
-            </div>
-            <button type="submit" className="w-full bg-blue-600 text-white text-sm font-medium py-2.5 rounded-lg hover:bg-blue-700 transition-colors">
-              Add Recipe
-            </button>
-          </form>
-        )}
 
         {activeTab === "Note" && (
           <form onSubmit={handleNoteSubmit} className="space-y-4">
