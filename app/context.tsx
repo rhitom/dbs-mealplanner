@@ -9,6 +9,7 @@ interface MealPlannerContextType {
   addMeal: (date: string, meal: Meal) => void;
   addNote: (date: string, note: string) => void;
   addTimeBlock: (date: string, block: TimeBlock) => void;
+  addLeftover: (fromDate: string, mealIndex: number, toDate: string, toMealType: Meal["type"]) => void;
   toggleFavorite: (recipeId: string) => void;
   isFavorite: (recipeId: string) => boolean;
 }
@@ -63,6 +64,32 @@ export function MealPlannerProvider({ children }: { children: ReactNode }) {
     });
   }
 
+  function addLeftover(fromDate: string, mealIndex: number, toDate: string, toMealType: Meal["type"]) {
+    setDays((prev) => {
+      const sourceDay = prev.find((d) => d.date === fromDate);
+      if (!sourceDay || !sourceDay.meals[mealIndex]) return prev;
+
+      const originalMeal = sourceDay.meals[mealIndex];
+      const leftoverMeal: Meal = {
+        ...originalMeal,
+        type: toMealType,
+        name: `${originalMeal.name} (leftover)`,
+        isLeftover: true,
+        prepTime: "5 min",
+      };
+
+      let updated = prev.find((d) => d.date === toDate)
+        ? prev
+        : [...prev, { date: toDate, meals: [], schedule: [] }];
+
+      return updated.map((d) => {
+        if (d.date !== toDate) return d;
+        const meals = d.meals.filter((m) => m.type !== toMealType);
+        return { ...d, meals: [...meals, leftoverMeal] };
+      });
+    });
+  }
+
   function toggleFavorite(recipeId: string) {
     setFavorites((prev) => {
       const next = new Set(prev);
@@ -81,7 +108,7 @@ export function MealPlannerProvider({ children }: { children: ReactNode }) {
 
   return (
     <MealPlannerContext.Provider
-      value={{ days, favorites, addMeal, addNote, addTimeBlock, toggleFavorite, isFavorite }}
+      value={{ days, favorites, addMeal, addNote, addTimeBlock, addLeftover, toggleFavorite, isFavorite }}
     >
       {children}
     </MealPlannerContext.Provider>

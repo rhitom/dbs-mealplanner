@@ -3,6 +3,7 @@ export interface Meal {
   name: string;
   emoji: string;
   prepTime?: string;
+  isLeftover?: boolean;
 }
 
 export interface Recipe {

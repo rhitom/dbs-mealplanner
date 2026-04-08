@@ -1,8 +1,19 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useMealPlanner } from "../../context";
+import { recipeCatalog } from "../../data";
+import type { Meal } from "../../data";
+
+function findRecipeId(mealName: string): string | null {
+  const cleaned = mealName.replace(/\s*\(leftover\)$/i, "");
+  const recipe = recipeCatalog.find(
+    (r) => r.name.toLowerCase() === cleaned.toLowerCase()
+  );
+  return recipe?.id ?? null;
+}
 
 const TODAY = "2026-04-08";
 
@@ -23,11 +34,85 @@ function formatShort(date: string) {
   });
 }
 
+function LeftoverPicker({
+  currentDate,
+  mealIndex,
+  onClose,
+}: {
+  currentDate: string;
+  mealIndex: number;
+  onClose: () => void;
+}) {
+  const { addLeftover } = useMealPlanner();
+  const nextDay = getAdjacentDates(currentDate).next;
+  const [toDate, setToDate] = useState(nextDay);
+  const [toType, setToType] = useState<Meal["type"]>("lunch");
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    addLeftover(currentDate, mealIndex, toDate, toType);
+    setSubmitted(true);
+    setTimeout(onClose, 1500);
+  }
+
+  if (submitted) {
+    return (
+      <div className="mt-3 bg-green-50 border border-green-200 rounded-lg px-3 py-2 text-xs text-green-800">
+        Leftover added to {formatShort(toDate)}!
+      </div>
+    );
+  }
+
+  const inputClass =
+    "rounded-md border border-zinc-300 px-2 py-1 text-xs text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
+
+  return (
+    <form onSubmit={handleSubmit} className="mt-3 bg-zinc-50 border border-zinc-200 rounded-lg p-3 space-y-2">
+      <p className="text-xs font-medium text-zinc-700">Save leftover to:</p>
+      <div className="flex gap-2">
+        <input
+          type="date"
+          value={toDate}
+          onChange={(e) => setToDate(e.target.value)}
+          className={inputClass}
+          required
+        />
+        <select
+          value={toType}
+          onChange={(e) => setToType(e.target.value as Meal["type"])}
+          className={inputClass}
+        >
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+        </select>
+      </div>
+      <div className="flex gap-2">
+        <button
+          type="submit"
+          className="bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-md hover:bg-blue-700 transition-colors"
+        >
+          Add Leftover
+        </button>
+        <button
+          type="button"
+          onClick={onClose}
+          className="text-xs text-zinc-500 hover:text-zinc-700"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  );
+}
+
 export default function DayPage() {
   const { date } = useParams<{ date: string }>();
   const { days } = useMealPlanner();
   const day = days.find((d) => d.date === date);
   const { prev, next } = getAdjacentDates(date);
+  const [leftoverPickerIndex, setLeftoverPickerIndex] = useState<number | null>(null);
 
   if (!day) {
     return (
@@ -38,19 +123,13 @@ export default function DayPage() {
           </h1>
           <p className="text-sm text-zinc-500 mb-4">{formatShort(date)}</p>
           <div className="flex gap-4 justify-center">
-            <Link
-              href={`/day/${prev}`}
-              className="text-blue-600 hover:underline text-sm"
-            >
+            <Link href={`/day/${prev}`} className="text-blue-600 hover:underline text-sm">
               ← Previous day
             </Link>
             <Link href="/" className="text-blue-600 hover:underline text-sm">
               Back to week
             </Link>
-            <Link
-              href={`/day/${next}`}
-              className="text-blue-600 hover:underline text-sm"
-            >
+            <Link href={`/day/${next}`} className="text-blue-600 hover:underline text-sm">
               Next day →
             </Link>
           </div>
@@ -109,23 +188,65 @@ export default function DayPage() {
           </h2>
           {day.meals.length > 0 ? (
             <div className="grid gap-4 sm:grid-cols-3">
-              {day.meals.map((meal, i) => (
-                <div
-                  key={i}
-                  className="bg-white rounded-xl border border-zinc-200 p-5 flex flex-col items-center text-center hover:shadow-md transition-shadow"
-                >
-                  <span className="text-4xl mb-3">{meal.emoji}</span>
-                  <p className="text-xs font-medium text-zinc-400 uppercase tracking-wide">
-                    {meal.type}
-                  </p>
-                  <p className="text-base font-semibold text-zinc-900 mt-1">
-                    {meal.name}
-                  </p>
-                  {meal.prepTime && (
-                    <p className="mt-3 text-xs text-zinc-500">⏱ {meal.prepTime}</p>
-                  )}
-                </div>
-              ))}
+              {day.meals.map((meal, i) => {
+                const recipeId = findRecipeId(meal.name);
+                const cardContent = (
+                  <>
+                    {meal.isLeftover && (
+                      <span className="absolute top-2 right-2 text-[10px] font-semibold bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full uppercase tracking-wide">
+                        Leftover
+                      </span>
+                    )}
+                    <span className="text-4xl mb-3">{meal.emoji}</span>
+                    <p className="text-xs font-medium text-zinc-400 uppercase tracking-wide">
+                      {meal.type}
+                    </p>
+                    <p className="text-base font-semibold text-zinc-900 mt-1">
+                      {meal.name}
+                    </p>
+                    {meal.prepTime && (
+                      <p className="mt-3 text-xs text-zinc-500">⏱ {meal.prepTime}</p>
+                    )}
+                    {recipeId && (
+                      <p className="mt-1 text-xs text-blue-500">View recipe →</p>
+                    )}
+                  </>
+                );
+
+                return (
+                  <div
+                    key={i}
+                    className="bg-white rounded-xl border border-zinc-200 p-5 flex flex-col items-center text-center hover:shadow-md transition-shadow relative"
+                  >
+                    {recipeId ? (
+                      <Link href={`/recipes/${recipeId}?from=/day/${date}`} className="flex flex-col items-center">
+                        {cardContent}
+                      </Link>
+                    ) : (
+                      cardContent
+                    )}
+                    {!meal.isLeftover && (
+                      <>
+                        <button
+                          onClick={() =>
+                            setLeftoverPickerIndex(leftoverPickerIndex === i ? null : i)
+                          }
+                          className="mt-3 text-xs text-zinc-400 hover:text-orange-600 transition-colors"
+                        >
+                          🥡 Mark as leftover
+                        </button>
+                        {leftoverPickerIndex === i && (
+                          <LeftoverPicker
+                            currentDate={date}
+                            mealIndex={i}
+                            onClose={() => setLeftoverPickerIndex(null)}
+                          />
+                        )}
+                      </>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           ) : (
             <p className="text-sm text-zinc-400 italic">No meals planned.</p>

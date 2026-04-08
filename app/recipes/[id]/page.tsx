@@ -1,13 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { recipeCatalog } from "../../data";
 import { useMealPlanner } from "../../context";
 
 export default function RecipeDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const searchParams = useSearchParams();
   const { isFavorite, toggleFavorite } = useMealPlanner();
+  const backHref = searchParams.get("from") || "/recipes";
+  const backLabel = searchParams.get("from") ? "← Back to day" : "← Back to recipes";
   const recipe = recipeCatalog.find((r) => r.id === id);
 
   if (!recipe) {
@@ -30,8 +33,8 @@ export default function RecipeDetailPage() {
   return (
     <div className="min-h-screen bg-zinc-50">
       <header className="bg-white border-b border-zinc-200 px-6 py-5">
-        <Link href="/recipes" className="text-sm text-blue-600 hover:underline">
-          ← Back to recipes
+        <Link href={backHref} className="text-sm text-blue-600 hover:underline">
+          {backLabel}
         </Link>
         <div className="flex items-center gap-3 mt-2">
           <span className="text-3xl">{recipe.emoji}</span>
